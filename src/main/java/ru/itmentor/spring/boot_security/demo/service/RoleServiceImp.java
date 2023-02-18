@@ -20,19 +20,18 @@ public class RoleServiceImp implements RoleService {
         this.roleRepository = roleRepository;
     }
 
-    @Transactional(readOnly = true)
+   
     @Override
     public List<Role> getAllRoles() {
         return roleRepository.findAll();
     }
 
-    @Transactional
+
     @Override
     public Role getRoleById(Long id) {
         return roleRepository.findById(id).orElse(null);
     }
 
-    @Transactional
     @Override
     public Set<Role> setRole(List<String> rolesId) {
         Set<Role> roleSet = new HashSet<>();
