@@ -23,33 +23,33 @@ public class UserServiceImp implements UserService, UserDetailsService {
         this.userRepository = userRepository;
     }
 
-    @Transactional
+ 
     @Override
     public void save(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
     }
 
-    @Transactional(readOnly = true)
+   
     @Override
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
 
-    @Transactional
+    
     @Override
     public User getUserById(Long id) {
         return userRepository.findById(id)
                 .orElse(null);
     }
 
-    @Transactional
+  
     @Override
     public void deleteUserById(Long id) {
         userRepository.deleteById(id);
     }
 
-    @Transactional
+    
     @Override
     public void updateUser(Long id, User updateUser) {
         User user = userRepository.findById(id).orElse(null);
@@ -63,7 +63,7 @@ public class UserServiceImp implements UserService, UserDetailsService {
         }
     }
 
-    @Transactional
+    
     @Override
     public User getUserByEmail(String email) {
         return userRepository.findUserByEmail(email);
